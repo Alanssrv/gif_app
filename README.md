@@ -1,10 +1,27 @@
 # gif_app
 
-A new Flutter project.
+Projeto Desenvolvido em Flutter
+Veja quais gifs mais compartilhados, procure um de sua preferência e compartilhe-os
 
-## Getting Started
+## Especificações do Projeto
 
-This project is a starting point for a Flutter application.
+- Uso de API [Giphy](https://giphy.com/)
+- Gifs em tendência e Sistema de pesquisa
+- Compartilhamento de gifs
+
+## Capturas de tela do App
+
+- Tela Principal
+![](https://drive.google.com/file/d/1MtifiHdt6QfTzr5tqSr4jVIG46lM1BbK/view?usp=sharing)
+
+- Compartilhamento pressionando um gif selecionado
+
+- Página de um gif selecionado
+
+- Compartilhamento clicando no botão de compartilhar
+
+
+## Flutter
 
 A few resources to get you started if this is your first Flutter project:
 
