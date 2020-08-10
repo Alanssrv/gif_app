@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gif_app/screens/gif_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:share/share.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  TextEditingController controller = TextEditingController();
   String _search;
   int _offset = 0;
 
@@ -23,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Future<Map> _getGifs() async {
     http.Response response;
 
-    if(_search == null){
+    if(_search == null || _search.isEmpty){
       response = await http.get("https://api.giphy.com/v1/gifs/trending?api_key=BgaRUyYO7OzY1ds47EyBIFBwCttJW35W&limit=20&rating=g");
     }else{
       response = await http.get("https://api.giphy.com/v1/gifs/search?api_key=BgaRUyYO7OzY1ds47EyBIFBwCttJW35W&q=$_search&limit=19&offset=$_offset&rating=g&lang=pt");
@@ -37,7 +42,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Image.network("https://developers.giphy.com/static/img/dev-logo-lg.7404c00322a8.gif"),
+        title: GestureDetector(
+          child: Image.network("https://developers.giphy.com/static/img/dev-logo-lg.7404c00322a8.gif"),
+          onTap: (){
+            setState(() {
+              _search = null;
+              controller.clear();
+              FocusScope.of(context).unfocus();
+            });
+          },
+        ),
         centerTitle: true,
       ),
       backgroundColor: Colors.black,
@@ -46,6 +60,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15,),
             child: TextField(
+              controller: controller,
               decoration: InputDecoration(
                 labelText: "Procure um Gif",
                 labelStyle: TextStyle(color: Colors.white),
@@ -58,6 +73,7 @@ class _HomePageState extends State<HomePage> {
               onSubmitted: (text){
                 setState(() {
                   _search = text;
+                  _offset = 0;
                 });
               },
             ),
@@ -106,11 +122,22 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (_context, index){
         if (_search == null || index < snapshot.data["data"].length) {
           return GestureDetector(
-            child: Image.network(
-              snapshot.data["data"][index]["images"]["fixed_height"]["url"],
+            child: FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: snapshot.data["data"][index]["images"]["fixed_height"]["url"],
               height: 300,
               fit: BoxFit.cover,
             ),
+            onTap: (){
+              Navigator.push(context, 
+                MaterialPageRoute(
+                  builder: (context)=>GifPage(snapshot.data["data"][index])
+                )
+              );
+            },
+            onLongPress: (){
+              Share.share(snapshot.data["data"][index]["images"]["fixed_height"]["url"]);
+            },
           );
         } else {
           return Container(
