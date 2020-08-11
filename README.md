@@ -1,7 +1,6 @@
 # gif_app
 
-Projeto Desenvolvido em Flutter
-Veja quais gifs mais compartilhados, procure um de sua preferência e compartilhe-os
+Projeto Desenvolvido em Flutter. Veja quais gifs mais compartilhados, procure um de sua preferência e compartilhe-os.
 
 ## Especificações do Projeto
 
@@ -12,13 +11,16 @@ Veja quais gifs mais compartilhados, procure um de sua preferência e compartilh
 ## Capturas de tela do App
 
 - Tela Principal
-![](https://drive.google.com/file/d/1MtifiHdt6QfTzr5tqSr4jVIG46lM1BbK/view?usp=sharing)
+![](/screenshots/1.png)
 
 - Compartilhamento pressionando um gif selecionado
+![](/screenshots/2.png)
 
 - Página de um gif selecionado
+![](/screenshots/3.png)
 
 - Compartilhamento clicando no botão de compartilhar
+![](/screenshots/4.png)
 
 
 ## Flutter
