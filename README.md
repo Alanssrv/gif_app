@@ -10,16 +10,16 @@ Projeto Desenvolvido em Flutter. Veja quais gifs mais compartilhados, procure um
 
 ## Capturas de tela do App
 
-- Tela Principal
+### Tela Principal
 ![](/screenshots/1.png)
 
-- Compartilhamento pressionando um gif selecionado
+### Compartilhamento pressionando um gif selecionado
 ![](/screenshots/2.png)
 
-- Página de um gif selecionado
+### Página de um gif selecionado
 ![](/screenshots/3.png)
 
-- Compartilhamento clicando no botão de compartilhar
+### Compartilhamento clicando no botão de compartilhar
 ![](/screenshots/4.png)
 
 
